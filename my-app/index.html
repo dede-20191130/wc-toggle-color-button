@@ -1,96 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="./dist/toggle-color-button-component.js"></script>
-    <style>
-        #box-one {
-            --toggle-color-button-len: 50px;
-            margin: 60px auto;
-            width: 400px;
-            border: solid 2px;
-        }
+    <style type="text/css">
+      #box-one {
+        --toggle-color-button-len: 50px;
+        margin: 60px auto;
+        width: 400px;
+        border: solid 2px;
+      }
 
-        #box-one[data-mode="dark"] {
-            background-color: darkblue;
-            color: lightblue;
-        }
+      #box-one[data-mode="dark"] {
+        background-color: darkblue;
+        color: lightblue;
+      }
 
-        #box-two {
-            --toggle-color-button-len: 40px;
-            margin: 60px auto;
-            width: 600px;
-            border: solid 2px;
-            text-align: center;
-        }
+      #box-two {
+        --toggle-color-button-len: 40px;
+        margin: 60px auto;
+        width: 600px;
+        border: solid 2px;
+        text-align: center;
+      }
 
-        #box-two input {
-            display: none;
-        }
+      #box-two input {
+        display: none;
+      }
 
-        #box-two label:before {
-            font-family: FontAwesome;
-            display: inline-block;
-            content: "□";
-            color: blue;
-            letter-spacing: 10px;
+      #box-two label:before {
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "□";
+        color: blue;
+        letter-spacing: 10px;
+      }
 
-        }
+      #box-two input:checked + label:before {
+        content: "✔";
+      }
 
-        #box-two input:checked+label:before {
-            content: "✔";
-        }
+      html[data-mode="dark"] * {
+        background-color: darkslategrey;
+        color: rgb(255, 230, 0);
+      }
 
-        html[data-mode="dark"] * {
-            background-color: darkslategrey;
-            color: rgb(255, 230, 0);
-
-        }
-
-        label,
-        input {
-            cursor: pointer;
-        }
+      label,
+      input {
+        cursor: pointer;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="box-one">
-        <p>ボックス内のダークモード切り替えボタン：<toggle-color-button data-toggled="#box-one"></toggle-color-button>
-        </p>
-
+      <p>
+        ボックス内のダークモード切り替えボタン：<toggle-color-button
+          data-toggled="#box-one"
+        ></toggle-color-button>
+      </p>
     </div>
     <div id="box-two">
-        <div>
-            画面全体のダークモード切り替えボタン：<toggle-color-button></toggle-color-button>
-        </div>
-        <p><input id="switchA" type="checkbox" /><label for="switchA">スイッチA</label></p>
-        <p><input id="switchB" type="checkbox" /><label for="switchB">スイッチB</label></p>
-        <p><input id="switchC" type="checkbox" /><label for="switchC">スイッチC</label></p>
-        <p><input id="switchD" type="checkbox" /><label for="switchD">スイッチD</label></p>
-        <hr>
-        <div>
-            <p>スイッチ稼働状態</p>
-            <p>スイッチA：<span id="result-switchA">OFF</span></p>
-            <p>スイッチB：<span id="result-switchB">OFF</span></p>
-            <p>スイッチC：<span id="result-switchC">OFF</span></p>
-            <p>スイッチD：<span id="result-switchD">OFF</span></p>
-        </div>
-
+      <div>
+        画面全体のダークモード切り替えボタン：<toggle-color-button
+        ></toggle-color-button>
+      </div>
+      <p>
+        <input id="switchA" type="checkbox" /><label for="switchA"
+          >スイッチA</label
+        >
+      </p>
+      <p>
+        <input id="switchB" type="checkbox" /><label for="switchB"
+          >スイッチB</label
+        >
+      </p>
+      <p>
+        <input id="switchC" type="checkbox" /><label for="switchC"
+          >スイッチC</label
+        >
+      </p>
+      <p>
+        <input id="switchD" type="checkbox" /><label for="switchD"
+          >スイッチD</label
+        >
+      </p>
+      <hr />
+      <div>
+        <p>スイッチ稼働状態</p>
+        <p>スイッチA：<span id="result-switchA">OFF</span></p>
+        <p>スイッチB：<span id="result-switchB">OFF</span></p>
+        <p>スイッチC：<span id="result-switchC">OFF</span></p>
+        <p>スイッチD：<span id="result-switchD">OFF</span></p>
+      </div>
     </div>
     <script>
-        for (const input of document.querySelectorAll("#box-two input")) {
-            input.addEventListener("click", (event) => {
-                const state = event.currentTarget.checked;
-                document.querySelector("#result-" + event.target.id).textContent = state ? "ON" : "OFF";
-            })
-        }
-
+      for (const input of document.querySelectorAll("#box-two input")) {
+        input.addEventListener("click", (event) => {
+          const state = event.currentTarget.checked;
+          document.querySelector(
+            "#result-" + event.target.id
+          ).textContent = state ? "ON" : "OFF";
+        });
+      }
     </script>
-</body>
-
+  </body>
 </html>
