@@ -28,13 +28,31 @@
             text-align: center;
         }
 
+        #box-two input {
+            display: none;
+        }
+
+        #box-two label:before {
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "□";
+            color: blue;
+            letter-spacing: 10px;
+
+        }
+
+        #box-two input:checked+label:before {
+            content: "✔";
+        }
+
         html[data-mode="dark"] * {
             background-color: darkslategrey;
             color: rgb(255, 230, 0);
 
         }
 
-        label {
+        label,
+        input {
             cursor: pointer;
         }
     </style>
@@ -50,10 +68,10 @@
         <div>
             画面全体のダークモード切り替えボタン：<toggle-color-button></toggle-color-button>
         </div>
-        <p><label for="switchA">スイッチA</label><input id="switchA" type="checkbox" /></p>
-        <p><label for="switchB">スイッチB</label><input id="switchB" type="checkbox" /></p>
-        <p><label for="switchC">スイッチC</label><input id="switchC" type="checkbox" /></p>
-        <p><label for="switchD">スイッチD</label><input id="switchD" type="checkbox" /></p>
+        <p><input id="switchA" type="checkbox" /><label for="switchA">スイッチA</label></p>
+        <p><input id="switchB" type="checkbox" /><label for="switchB">スイッチB</label></p>
+        <p><input id="switchC" type="checkbox" /><label for="switchC">スイッチC</label></p>
+        <p><input id="switchD" type="checkbox" /><label for="switchD">スイッチD</label></p>
         <hr>
         <div>
             <p>スイッチ稼働状態</p>
